@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <form class="form-inline ml-auto">
-                    <a href="/"><i class="material-icons black">close</i></a>
+                    <a href="{{ url()->previous() }}"><i class="material-icons black">close</i></a>
                 </form>
             </div>
         </div>
@@ -79,7 +79,7 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">{{$bk->book_name}}'s Summary by Chapter </h5>
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">{{$bk->book_name}}'s Summary by Chapter</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -106,8 +106,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                    <button type="submit" class="btn filter_button float-right">Book</button>
+                                                    <button type="button" class="btn filter_button_1 btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn filter_button_1 btn-primary">Save changes</button>
                                                 </div>
                                             </div>
                                         </div>

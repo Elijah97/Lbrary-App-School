@@ -72,6 +72,10 @@
                 <li class="{{ Request::is(['dashboard']) ? 'active' : null }}">
                     <a href="{{ URL::to('/dashboard') }}"><i class="material-icons Icon">show_chart</i>ANALYTICS</a>
                 </li>
+                @if(Auth::user()->type !== 0 && Auth::user()->type !== 1)
+                <li class="{{ Request::is(['books']) || Request::is(['shelf']) ? 'active' : null }}">
+                    <a href="{{ URL::to('/books') }}"><i class="material-icons Icon">chat_bubble_outline</i>BOOKS</a>
+                </li>
                 <li class="{{ Request::is(['students']) || Request::is(['staff'])  ? 'active' : null }}">
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="material-icons Icon">pages</i>ADD</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -86,11 +90,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="{{ Request::is(['books']) || Request::is(['shelf']) ? 'active' : null }}">
-                    <a href="{{ URL::to('/books') }}"><i class="material-icons Icon">chat_bubble_outline</i>BOOKS</a>
-                </li>
                 <li class="{{ Request::is(['transaction']) || Request::is(['return']) ? 'active' : null }}">
                     <a href="{{ URL::to('/transaction') }}"><i class="material-icons Icon">all_inclusive</i>TRANSACTION</a>
+                </li>
+                @endif
+                <li class="{{ Request::is(['allbooks'])  ? 'active' : null }}">
+                    <a href="{{ URL::to('/allbooks') }}"><i class="material-icons Icon">book</i>ALL BOOKS</a>
                 </li>
                 <li class="{{ Request::is(['reports']) ? 'active' : null }}">
                     <a href="{{ URL::to('/reports') }}"><i class="material-icons Icon">file_copy</i>REPORT</a>

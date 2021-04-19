@@ -37,31 +37,36 @@ class StaffController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'names' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'staffId' => 'required',
             'address' => 'required',
             'faculty' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return redirect('/students')->withErrors($validator)->withInput();
+            return redirect('/staffs')->withErrors($validator)->withInput();
         } else {
-            $student =  new User;
+            $password = $this->generateRandomString();
+            $staffs =  new User;
             $user_key = SystemUtils::generateKey(255, false, true);
-            $student->user_key = $user_key;
-            $student->names = $request->input('names');
-            $student->email = $request->input('email');
-            $student->password = bcrypt($this->generateRandomString());
-            $student->userUUID = $request->input('studentId');
-            $student->address = $request->input('address');
-            $student->faculty = $request->input('faculty');
-            $student->type = 1;
-            $student->status = 0;
+            $staffs->user_key = $user_key;
+            $staffs->names = $request->input('names');
+            $staffs->email = $request->input('email');
+            $staffs->password = bcrypt($password);
+            $staffs->userUUID = $request->input('staffId');
+            $staffs->address = $request->input('address');
+            $staffs->faculty = $request->input('faculty');
+            $staffs->type = 1;
+            $staffs->status = 1;
+
+            // return $this->generateRandomString();
 
             $data = array(
                 'name' => $request->input('names'),
-                'link' => 'http://127.0.0.1:8000/confirm',
-                'token' => $user_key
+                'link' => 'http://127.0.0.1:8000',
+                'token' => $user_key,
+                'email' => $request->input('email'),
+                'password' => $password
             );
             $emailData = array(
                 'to'        => $request->input('email'),
@@ -73,7 +78,7 @@ class StaffController extends Controller
                 $message->to($emailData['to'])->subject($emailData['subject']);
             });
 
-            $student->save();
+            $staffs->save();
             return redirect('/staffs')->with('success', 'Success; Staff to check her/his account for activation.');
         }
     }

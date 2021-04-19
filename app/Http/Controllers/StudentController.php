@@ -37,7 +37,7 @@ class StudentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'names' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'studentId' => 'required',
             'address' => 'required',
             'faculty' => 'required',
@@ -47,23 +47,26 @@ class StudentController extends Controller
         if ($validator->fails()) {
             return redirect('/students')->withErrors($validator)->withInput();
         } else {
+            $password = $this->generateRandomString();
             $student =  new User;
             $user_key = SystemUtils::generateKey(255, false, true);
             $student->user_key = $user_key;
             $student->names = $request->input('names');
             $student->email = $request->input('email');
-            $student->password = bcrypt($this->generateRandomString());
+            $student->password = bcrypt($password);
             $student->userUUID = $request->input('studentId');
             $student->address = $request->input('address');
             $student->faculty = $request->input('faculty');
             $student->year = $request->input('year');
             $student->type = 0;
-            $student->status = 0;
+            $student->status = 1;
 
             $data = array(
                 'name' => $request->input('names'),
-                'link' => 'http://127.0.0.1:8000/confirm',
-                'token' => $user_key
+                'link' => 'http://127.0.0.1:8000',
+                'token' => $user_key,
+                'email' => $request->input('email'),
+                'password' => $password
             );
             $emailData = array(
                 'to'        => $request->input('email'),

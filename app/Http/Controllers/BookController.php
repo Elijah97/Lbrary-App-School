@@ -37,8 +37,19 @@ class BookController extends Controller
                 $books[$i]->contents = DB::table('book_contents')->where('book_key', $books[$i]->book_key)->select('book_chapter', 'content')->distinct()->orderBy('book_chapter', 'ASC')->get();
             }
         }
-        // return $books;
         return view('/publicShelf', ['books' => $books, 'index' => $index]);
+    }
+
+    public function allbooks()
+    {
+        $index = 1;
+        $books = DB::table('books')->select('*')->get();
+        if (sizeof($books)) {
+            for ($i = 0; $i < sizeof($books); $i++) {
+                $books[$i]->contents = DB::table('book_contents')->where('book_key', $books[$i]->book_key)->select('book_chapter', 'content')->distinct()->orderBy('book_chapter', 'ASC')->get();
+            }
+        }
+        return view('/allbooks', ['books' => $books, 'index' => $index]);
     }
 
     public function addBook(Request $request)
@@ -71,6 +82,30 @@ class BookController extends Controller
 
             $book->save();
             return redirect('/books')->with('success', 'Book successfully added');
+        }
+    }
+
+    public function bookSuspend($book_key)
+    {
+        $suspend = DB::update("UPDATE books SET book_status = 0 WHERE book_key = '$book_key' ");
+        if ($suspend) {
+            return redirect()->back()->with('success', 'Book successfully suspended');
+        }
+    }
+
+    public function bookActivate($book_key)
+    {
+        $activate = DB::update("UPDATE books SET book_status = 1 WHERE book_key = '$book_key' ");
+        if ($activate) {
+            return redirect()->back()->with('success', 'Book successfully activated');
+        }
+    }
+
+    public function bookDelete($book_key)
+    {
+        $delete = DB::delete("DELETE FROM books WHERE book_key = '$book_key' ");
+        if ($delete) {
+            return redirect()->back()->with('success', 'Book successfully deleted');
         }
     }
 }

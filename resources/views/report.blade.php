@@ -20,9 +20,9 @@
                                     <span class="Dash_Txt_Normal" >Print Table</span>
                                 </button>  --}}
 
-                            <a href="/sendReminder" class="btn filter_button float-right" type="button" style="margin-left: 10px">
+                            <!-- <a href="/sendReminder" class="btn filter_button float-right" type="button" style="margin-left: 10px">
                                 <span class="Dash_Txt_Normal">Send reminder</span>
-                            </a>
+                            </a> -->
 
                         </div>
                     </div>

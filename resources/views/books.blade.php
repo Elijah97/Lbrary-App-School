@@ -34,6 +34,7 @@
                             <input class="form-control input mabo16" type="text" name="bookName" placeholder="Book Name">
                             <input class="form-control input mabo16" type="number" name="bookId" placeholder="Book ID">
                             <input class="form-control input mabo16" type="text" name="bookAuthor" placeholder="Book Author">
+                            <label for="exampleInputEmail1" class="mato16">Published Date</label>
                             <input class="form-control input mabo16" type="date" name="published" placeholder="Published Date">
                             <textarea class="form-control input mabo16" name="description" placeholder="Brief Description(Max: 100)"></textarea>
                             <input class="form-control input mabo16" type="text" name="bookShelf" placeholder="Book Shelf Number">

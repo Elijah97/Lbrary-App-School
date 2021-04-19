@@ -377,6 +377,14 @@ ul ul a {
 	text-transform: capitalize;
 }
 
+.filter_button_1{
+	padding: 6px 8px;
+	font-size: 12px;
+	height: 32px;
+	border-radius: 4px;
+	text-transform: capitalize;
+}
+
 
 
 

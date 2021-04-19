@@ -26,6 +26,7 @@
                                 <option value="Global Challenges">Global Challenges</option>
                                 <option value="Entrepreneurship">Entrepreneurship</option>
                             </select>
+                            <label for="exampleInputEmail1" class="mato16">Graduation Year</label>
                             <input name="year" class="form-control input mabo16" type="date" placeholder="Class of 20--">
                             <button type="submit" class="btn filter_button float-left mato32">Add Student</button>
                         </div>
@@ -56,7 +57,7 @@
                                 <th>Email</th>
                                 <th>Student ID</th>
                                 <th>Address</th>
-                                <th>Year</th>
+                                <th>Graduation Year</th>
                                 <th>Faculty</th>
                                 <th>Status</th>
                                 <th>Action</th>

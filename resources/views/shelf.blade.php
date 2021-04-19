@@ -43,7 +43,7 @@
                                 <th>Published Date</th>
                                 <th>Book Shelf</th>
                                 <th>Book Chapters</th>
-                                <th>Borrowed</th>
+                                <th>Times Borrowed</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -72,13 +72,13 @@
                                     @if($bk->book_status !== 2)
                                     @if($bk->book_status == 1)
 
-                                    <a href="/bookPend/{{$bk->book_id}}" title="Pause request"><span class=""><i class="material-icons Icon">pause</i></span></a>
+                                    <a href="/book/{{$bk->book_key}}/suspend" title="Suspend Book"><span class=""><i class="material-icons Icon">pause</i></span></a>
                                     @else
-                                    <a href="/bookPlay/{{$bk->book_id}}" title="Play request"><span class=""><i class="material-icons Icon">play_arrow</i></span></a>
+                                    <a href="/book/{{$bk->book_key}}/activate" title="Activate Book"><span class=""><i class="material-icons Icon">play_arrow</i></span></a>
                                     @endif
-                                    <a href="/bookEdit/{{$bk->book_id}}" title="Edit request"><span class=""><i class="material-icons Icon">edit</i></span></a>
+                                    <a href="/book/{{$bk->book_key}}/edit" title="Edit Book"><span class=""><i class="material-icons Icon">edit</i></span></a>
 
-                                    <a href="/bookRemove/{{$bk->book_id}}" title="Delete request"><span class=""><i class="material-icons Icon">delete</i></span></a>
+                                    <a href="/book/{{$bk->book_key}}/delete" title="Delete Book"><span class=""><i class="material-icons Icon">delete</i></span></a>
                                     @else
                                     No Action for borrowed books
                                     @endif

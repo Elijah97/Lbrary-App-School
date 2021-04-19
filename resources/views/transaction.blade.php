@@ -35,6 +35,7 @@
                                 <option value="{{ $user->user_key }}">{{ $user->names}} - {{$user->type == 0 ? "Student" : "Staff"}}</option>
                                 @endforeach
                             </select>
+                            <label for="exampleInputEmail1" class="mato16">Expected Return Date</label>
                             <input type="date" name="date_expected" class="form-control input mabo16" placeholder="Date to be returned" required>
                             <select name="book_key" class="form-control input mabo16" id="book" required>
                                 <option></option>

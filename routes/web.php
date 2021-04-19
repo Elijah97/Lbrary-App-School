@@ -67,6 +67,10 @@ Route::get('/books', [BookController::class, 'index'])->middleware('auth');
 Route::post('/books', [BookController::class, 'addBook'])->name('addBook');
 Route::get('/shelf', [BookController::class, 'shelf'])->middleware('auth');
 Route::get('/publicShelf', [BookController::class, 'publicShelf'])->middleware('guest');
+Route::get('/allbooks', [BookController::class, 'allbooks'])->middleware('auth');
+Route::get('/book/{bookKey}/suspend', [BookController::class, 'bookSuspend'])->middleware('auth');
+Route::get('/book/{bookKey}/activate', [BookController::class, 'bookActivate'])->middleware('auth');
+Route::get('/book/{bookKey}/delete', [BookController::class, 'bookDelete'])->middleware('auth');
 
 // Content Routes
 Route::get('/content', [BookContentController::class, 'content'])->middleware('auth');
