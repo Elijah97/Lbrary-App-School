@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library App</title>
-    <link rel="shortcut icon" href="{{ URL::asset('images/images/logo_white.png')}}">
+    <link rel="shortcut icon" href="{{ URL::asset('images/logo.png')}}">
     <link href="{{ URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('css/bootstrap-reboot.min.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('css/bootstrap-grid.min.css')}}" rel="stylesheet">
@@ -73,7 +73,7 @@
                                     <td>{{$bk->book_chapters}}</td>
                                     <td>{{$bk->book_shelf}}</td>
                                     <td>{{$bk->book_status === 1 ? "Active" : "Pending" }}</td>
-                                    <td><a data-toggle="modal" data-target="#CONTENT-{{$index}}" title="View Details"><span class=""><i class="material-icons Icon">visibility</i></span></a></td>
+                                    <td><a data-toggle="modal" data-target="#CONTENT-{{$index}}" style="cursor:pointer" title="View Details"><span class=""><i class="material-icons Icon">visibility</i></span></a></td>
                                     <!-- Modal -->
                                     <div class="modal fade" id="CONTENT-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
